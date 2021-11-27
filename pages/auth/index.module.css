@@ -1,0 +1,49 @@
+.container {
+  @apply grid place-content-center;
+  @apply h-full;
+}
+
+.container h1 {
+  @apply text-gray-700 text-4xl font-bold text-center mt-8;
+}
+
+.form_container {
+  @apply p-4 bg-gray-400 h-56 mt-8;
+}
+
+.form_group {
+  @apply mb-4;
+}
+
+.form_group label {
+  @apply block font-light text-gray-100 text-sm mb-2;
+}
+
+.form_group input {
+  @apply w-full bg-gray-600 border-gray-500 appearance-none border p-4 font-light;
+  @apply focus:outline-none text-gray-100;
+}
+
+.container_bottom {
+  @apply flex items-center justify-between mt-8;
+}
+
+.container_bottom .submit_btn {
+  @apply bg-blue-600 hover:bg-blue-400 text-white font-light py-2 px-8 rounded focus:outline-none;
+}
+
+.note {
+  @apply text-center text-sm font-light;
+}
+
+.note a {
+  @apply font-light text-lg text-blue-600;
+}
+
+.container_bottom .forgot {
+  @apply inline-block align-baseline font-light text-base text-blue-600 hover:text-blue-500;
+}
+
+.containerResize {
+  @apply h-80 mt-2;
+}

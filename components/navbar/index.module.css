@@ -1,0 +1,53 @@
+.nav_container {
+  /* Container display type */
+  @apply max-w-screen-lg flex flex-row bg-blue-700 items-center justify-between;
+  /* Height, padding and margins */
+  @apply h-16 px-2;
+  /* Color */
+  @apply text-gray-100;
+}
+
+.logo {
+  /* Color */
+  @apply text-purple-200;
+  /* Text Size and Weight */
+  @apply text-lg font-bold;
+}
+
+.nav_links {
+  /* Medium Responsive */
+  @apply md:flex md:flex-row md:justify-between md:items-center md:justify-between;
+  /* Visibility */
+  @apply hidden md:flex;
+}
+
+.nav_links li {
+  @apply mx-6;
+}
+
+.nav_links_mobile {
+  /* Visibility */
+  @apply flex absolute top-16 right-0;
+  /* Medium Responsive */
+  @apply md:hidden;
+  /* Size */
+  @apply w-1/2 h-1/2;
+  /* Display type */
+  @apply text-purple-700 flex flex-col items-center justify-around;
+  /* Background */
+  @apply bg-gray-300 rounded-lg;
+}
+
+.nav_links_mobile li {
+  @apply px-12 py-2 hover:text-white hover:bg-gray-400;
+}
+
+.nav_menu {
+  /* Responsive */
+  @apply md:hidden;
+  @apply rounded-lg ring-2 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50;
+}
+
+.hide {
+  @apply hidden;
+}
