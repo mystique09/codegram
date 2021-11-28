@@ -59,7 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             secure: (process.env.NODE_ENV === "production")
           };
           res.setHeader('Set-Cookie', serialize('session_id', token, cookieOption));
-
+          
           return res.status(200).json({
             message: "Login Success!",
             user: {
