@@ -1,3 +1,4 @@
+import redirectTo from "@/helpers/redirect_to";
 import { GetServerSideProps, Redirect } from "next"
 
 const Profile = () => {
@@ -13,12 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const {_id} = context.params;
 
   if(!context.req.cookies?.session_id) {
-    return {
-      redirect: {
-        destination: "/auth",
-        statusCode: 301
-      }
-    }
+    return redirectTo("/auth");
   }
   return {
     props: {}

@@ -3,6 +3,7 @@ import Post from "@/models/post";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
+import redirectTo from "@/helpers/redirect_to";
 
 export interface PostType {
   _id?: string,
@@ -58,14 +59,7 @@ export const getServerSideProps = async (context) => {
     session_id
   } = context.req.cookies;
 
-  if (!session_id) {
-    return {
-      redirect: {
-        destination: "/auth",
-        status: 302
-      }
-    }
-  }
+  if(!session_id)return redirectTo("/auth");
   
   await connectDB();
   const posts = await Post.find().populate('author', 'username _id');

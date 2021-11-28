@@ -3,17 +3,13 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import redirectTo from "@/helpers/redirect_to";
 
 export const getServerSideProps = async (context) => {
   const { session_id } = context.req.cookies;
   
   if(session_id){
-    return {
-        redirect: {
-          destination: "/posts",
-          status: 302
-        }
-    }
+    return redirectTo("/posts")
   }
   return {props: {}}
 }

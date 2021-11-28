@@ -10,6 +10,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
+import redirectTo from "@/helpers/redirect_to";
 
 const SignIn = () => {
   const dispatch = useAppDispatch();
@@ -86,12 +87,7 @@ const SignIn = () => {
 export const getServerSideProps  = async (context) => {
 
   if(context.req.cookies?.session_id){
-    return {  
-        redirect: {
-          destination: "/posts",
-          status: 301
-        }
-    }
+    return redirectTo("/posts");
   }
   return {
     props: {}
