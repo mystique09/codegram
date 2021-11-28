@@ -35,11 +35,11 @@
   /* Display type */
   @apply text-purple-700 flex flex-col items-center justify-around;
   /* Background */
-  @apply bg-gray-300 rounded-lg;
+  @apply bg-gray-100 rounded-sm z-10;
 }
 
 .nav_links_mobile li {
-  @apply px-12 py-2 hover:text-white hover:bg-gray-400;
+  @apply px-12 py-2 hover:text-white hover:bg-purple-400;
 }
 
 .nav_menu {
