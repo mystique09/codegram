@@ -1,10 +1,11 @@
 import mongoose, { Schema } from "mongoose";
+import User from "@/models/user"
 
 const PostSchema: Schema = new mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: [true, "Author is required!"],
-    ref: 'User'
+    ref: User
   },
   description: {
     type: String,
