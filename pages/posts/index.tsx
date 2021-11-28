@@ -18,19 +18,20 @@ export interface PostType {
 
 export const Card = ({author, description, created_at, image}: PostType) => {
   return <div className={styles.card_container}>
-    <div className="head">
-      <Link href={`/profile/${author._id}`}><a className={styles.profile}>{author.username}</a></Link>
-      <span className="datea">{created_at}</span>
+    <div className={styles.head}>
+      <Link href="/profile/[slug]" as={`/profile/${author._id}`}><a className={styles.username}>@{author.username}</a></Link>
+      <span className={styles.date}>{created_at}</span>
     </div>
-    <div className="image_container">
+    <div className={styles.image_container}>
       <Image src={image}
         width={240}
         height={240}
         layout="responsive"
         alt={description}
+        priority="true"
         />
     </div>
-    <p className="description">
+    <p className={styles.description}>
       {description}
     </p>
   </div>
@@ -47,10 +48,7 @@ const Posts = ({ posts }: any) => {
     ));
   
   return <>
-    <h1>Test, list of all posts</h1>
-    <ul>
-        {postsMap}
-    </ul> 
+    {postsMap}
   </>
 }
 
