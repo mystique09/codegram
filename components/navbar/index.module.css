@@ -16,7 +16,7 @@
 
 .nav_links {
   /* Medium Responsive */
-  @apply md:flex md:flex-row md:justify-between md:items-center md:justify-between;
+  @apply md:flex md:flex-row md:justify-between md:items-center;
   /* Visibility */
   @apply hidden md:flex;
 }

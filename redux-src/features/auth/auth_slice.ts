@@ -14,13 +14,10 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       localStorage.setItem("user", JSON.stringify(action.payload.user));
-      
-      const accessToken = localStorage.getItem("jwt");
       const user = localStorage.getItem("user");
       return {
         ...state,
         data: {
-          accessToken,
           user: JSON.parse(user)
         }
       };

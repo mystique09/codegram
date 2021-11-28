@@ -1,8 +1,7 @@
 import styles from "./index.module.css"
 import Link from "next/link";
 import {
-  useState,
-  useEffect
+  useState
 } from 'react';
 import {
   BiMenu,
@@ -43,7 +42,6 @@ function Navbar() {
 
   return <header className={styles.nav_container}>
     <h1 className={styles.logo}><Link href="/"><a>Codegram</a></Link></h1>
-
     <ul className={styles.nav_links}>
 
       <li onClick={()=> setIsMenuActive(false)}>
@@ -52,8 +50,9 @@ function Navbar() {
         </Link>
       </li>
 
-      { !auth.user ? (
-    <>
+      { !auth.user ? 
+      (
+        <>
     <li onClick={()=> setIsMenuActive(false)}>
           <Link href="/auth/">
             <a>Sign In</a>
@@ -63,7 +62,8 @@ function Navbar() {
           <Link href="/auth/register">
             <a>Sign Up</a>
           </Link>
-    </li> < />
+    </li>
+    </>
   ):
     (
       <>
@@ -72,8 +72,10 @@ function Navbar() {
             <a>Profile</a>
           </Link>
         </li>
-      <button className={styles.logout_btn} type="button" onClick={handleLogout}>Log Out</button> < />
-    )}
+      <button className={styles.logout_btn} type="button" onClick={handleLogout}>Log Out</button> 
+      </>
+    )
+    }
   </ul>
     <div className={styles.nav_menu} onClick={()=>
     setIsMenuActive(!isMenuActive)}>
@@ -87,7 +89,9 @@ function Navbar() {
             <a>Posts</a>
           </Link>
         </li>
-        { !auth.user ? (<>
+        { !auth.user ? 
+        (
+        <>
       <li onClick={()=> setIsMenuActive(false)}>
             <Link href="/auth/">
               <a>Sign In</a>
@@ -97,7 +101,8 @@ function Navbar() {
             <Link href="/auth/register">
               <a>Sign Up</a>
             </Link>
-          </li> < />
+          </li> 
+          </>
     ):
     (
       <>
@@ -107,10 +112,12 @@ function Navbar() {
             </Link>
           </li>
       <button
-        className={styles.logout_btn} type="button" onClick={handleLogout}>Log Out</button> < />
-    )}
+        className={styles.logout_btn} type="button" onClick={handleLogout}>Log Out</button> 
+      </>
+    )
+    }
   </ul>
-  </header>
+</header>
 }
 
 export default Navbar;
