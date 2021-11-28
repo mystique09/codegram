@@ -1,0 +1,20 @@
+
+.card_container {
+  @apply p-4 bg-gray-700 m-2 text-white rounded-sm;
+}
+
+.head {
+  @apply py-2 flex flex-row items-center justify-between;
+}
+
+.username {
+  @apply underline font-bold text-base;
+}
+
+.date {
+  @apply font-thin text-sm text-gray-300;
+}
+
+.description {
+  @apply py-4 font-light text-sm text-gray-100;
+}

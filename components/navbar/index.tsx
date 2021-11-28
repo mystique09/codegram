@@ -35,8 +35,8 @@ function Navbar() {
     });
     const message = await response.json();
     dispatch(logout());
-
-    await router.replace(router.pathname, "/auth");
+    
+    await router.replace(router.asPath, "/auth");
     await router.push("/auth");
   }
 

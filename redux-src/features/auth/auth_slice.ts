@@ -27,7 +27,7 @@ export const authSlice = createSlice({
       return {
         ...state,
         data: {
-          user: {}
+          
         }
       }
     },
