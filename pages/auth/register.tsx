@@ -6,9 +6,7 @@ import { useRouter } from "next/router";
 import redirectTo from "@/helpers/redirect_to";
 
 export const getServerSideProps = async (context) => {
-  const { session_id } = context.req.cookies;
-  
-  if(session_id){
+  if(context.req.cookies?.session_id){
     return redirectTo("/posts")
   }
   return {props: {}}

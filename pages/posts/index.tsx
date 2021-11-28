@@ -55,11 +55,7 @@ const Posts = ({ posts }: any) => {
 }
 
 export const getServerSideProps = async (context) => {
-  const {
-    session_id
-  } = context.req.cookies;
-
-  if(!session_id)return redirectTo("/auth");
+  if(!context.req.cookies?.session_id)return redirectTo("/auth");
   
   await connectDB();
   const posts = await Post.find().populate('author', 'username _id');
