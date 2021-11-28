@@ -70,7 +70,7 @@ const SignIn = () => {
           <label htmlFor="password">Password</label>
           <input type="text" name="password" id="password" placeholder="Enter your password" value={userState.password} onChange={handleChange} />
         </div>
-        <p>{error}</p>
+        <p className={styles.error}>{error}</p>
         <div className={styles.container_bottom}>
           <button className={styles.submit_btn} type="submit">Sign In</button>
           <Link href="/forgot-password">

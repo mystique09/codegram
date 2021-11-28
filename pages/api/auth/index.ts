@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       if ([!username, !password].includes(true)) {
         return res.status(403).json({
-          message: "Complete missing fields."
+          error: "Complete missing fields."
         });
       }
 

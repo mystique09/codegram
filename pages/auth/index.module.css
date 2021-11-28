@@ -47,3 +47,7 @@
 .containerResize {
   @apply h-80 mt-2;
 }
+
+.error {
+  @apply text-red-400;
+}

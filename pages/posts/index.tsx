@@ -2,12 +2,23 @@ import connectDB from "@/utils/connect_db";
 import Post from "@/models/post";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../index.module.css";
+import styles from "./index.module.css";
 
-export const Card = ({author, description, created_at, id, image}: {author: string, description: string, created_at: Date, id: string, image: string}) => {
-  return <div className="card_container">
+export interface PostType {
+  _id?: string,
+  author: {
+    _id: string,
+    username: string
+  },
+  description: string,
+  created_at: Date,
+  image: string
+}
+
+export const Card = ({author, description, created_at, image}: PostType) => {
+  return <div className={styles.card_container}>
     <div className="head">
-      <Link href={`/profile/${id}`}><a className={styles.profile}>{author}</a></Link>
+      <Link href={`/profile/${author._id}`}><a className={styles.profile}>{author.username}</a></Link>
       <span className="datea">{created_at}</span>
     </div>
     <div className="image_container">
@@ -24,8 +35,15 @@ export const Card = ({author, description, created_at, id, image}: {author: stri
   </div>
 }
 
-const Posts = ({ posts }) => {
-  const postsMap = JSON.parse(posts).map(post => (<li key={post._id}>{post.description}</li>));
+const Posts = ({ posts }: any) => {
+  const postsMap = JSON.parse(posts).map((post: PostType) => (
+    <Card key={post._id} 
+    author={post.author}
+    image={post.image}
+    description={post.description}
+    created_at={post.created_at}
+    />  
+    ));
   
   return <>
     <h1>Test, list of all posts</h1>
@@ -50,7 +68,7 @@ export const getServerSideProps = async (context) => {
   }
   
   await connectDB();
-  const posts = await Post.find();
+  const posts = await Post.find().populate('author', 'username _id');
   
   return {
     props: {

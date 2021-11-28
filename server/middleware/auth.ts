@@ -2,14 +2,9 @@ import User from "@/models/user";
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 
-interface Response {
-  success: boolean,
-  message: string
-}
-
 export type AuthResponse = {success: boolean, message: string};
 
-async function auth(req: NextApiRequest, res: NextApiResponse<Response>): Promise<Response> {
+async function auth(req: NextApiRequest, res: NextApiResponse<AuthResponse>): Promise<AuthResponse> {
   const {
     session_id: authorization
   } = req.cookies;
