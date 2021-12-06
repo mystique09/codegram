@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
 import redirectTo from "@/helpers/redirect_to";
-
+import { RiUserFollowLine } from "react-icons/ri"
 export interface PostType {
   _id?: string,
   author: {
@@ -19,8 +19,9 @@ export interface PostType {
 export const Card = ({author, description, created_at, image}: PostType) => {
   return <div className={styles.card_container}>
     <div className={styles.head}>
-      <Link href="/profile/[slug]" as={`/profile/${author._id}`}><a className={styles.username}>@{author.username}</a></Link>
-      <span className={styles.date}>{created_at}</span>
+      <Link href="/profile/[slug]" as={`/profile/${author._id}`}><a className={styles.username}>@{author.username}</a>
+      </Link>
+      <button className={styles.follow}><RiUserFollowLine/></button>
     </div>
     <div className={styles.image_container}>
       <Image src={image}
@@ -31,6 +32,7 @@ export const Card = ({author, description, created_at, image}: PostType) => {
         priority="true"
         />
     </div>
+    <span className={styles.date}>{created_at}</span>
     <p className={styles.description}>
       {description}
     </p>

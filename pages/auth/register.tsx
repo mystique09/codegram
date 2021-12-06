@@ -20,6 +20,7 @@ const Register = () => {
   });
   
   const [error, setError]: [string, Function] = useState("");
+  const [isLoading, setLoading] = useState(false);
   
   const router = useRouter();
   
@@ -33,6 +34,7 @@ const Register = () => {
   
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     
     const newUser = userState;
     const response = await fetch("/api/auth/register", {
@@ -49,7 +51,10 @@ const Register = () => {
       router.push("/auth");
     }else{
       setError(data.error);
-      setTimeout(()=> setError(""), 1500);
+      setTimeout(()=> {
+        setError("");
+        setLoading(false);
+      }, 1500);
     }
   }
   
@@ -72,9 +77,9 @@ const Register = () => {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" placeholder="Enter your password" value={userState.password} onChange={handleChange} />
         </div>
-        <p>{error}</p>
+        { error ? (<p className={styles.error}>{error}</p>) : <p></p> }
         <div className={`${styles.container_bottom} justify-center align-center`}>
-          <button className="self-center" type="submit">Sign Up</button>
+         <button disabled={isLoading & "disabled"} className={`${!isLoading ? styles.submit_btn : styles.loading_btn}`} type="submit">Sign Up</button>
         </div>
         <p className={styles.note}>
         Already have an account? 

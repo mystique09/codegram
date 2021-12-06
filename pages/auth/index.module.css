@@ -29,7 +29,13 @@
 }
 
 .container_bottom .submit_btn {
-  @apply bg-blue-600 hover:bg-blue-400 text-white font-light py-2 px-8 rounded focus:outline-none;
+  /*@apply bg-blue-600 hover:bg-blue-400 text-white font-light py-2 px-8 rounded focus:outline-none;
+*/
+  @apply btn btn-primary;
+}
+
+.container_bottom .loading_btn {
+  @apply btn btn-disabled loading;
 }
 
 .note {
@@ -49,5 +55,5 @@
 }
 
 .error {
-  @apply text-red-400;
+  @apply badge badge-error;
 }

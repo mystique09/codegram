@@ -22,10 +22,11 @@ const SignIn = () => {
     password: ""
   });
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setLoading(true);
     const res = await fetch("/api/auth", {
       method: "POST",
       headers: {
@@ -44,7 +45,10 @@ const SignIn = () => {
       router.push("/posts");
     }else{
       setError(data.error);
-      setTimeout(() => setError(""), 1500);
+      setTimeout(() => {
+        setError("");
+        setLoading(false);
+      }, 1500);
     }
   };
   
@@ -71,9 +75,9 @@ const SignIn = () => {
           <label htmlFor="password">Password</label>
           <input type="text" name="password" id="password" placeholder="Enter your password" value={userState.password} onChange={handleChange} />
         </div>
-        <p className={styles.error}>{error}</p>
+        { error ? (<p className={styles.error}>{error}</p>) : <p></p> }
         <div className={styles.container_bottom}>
-          <button className={styles.submit_btn} type="submit">Sign In</button>
+          <button disabled={isLoading & "disabled"} className={`${!isLoading ? styles.submit_btn : styles.loading_btn}`} type="submit">Sign In</button>
           <Link href="/forgot-password">
             <a className={styles.forgot}>Forgot password?</a>
           </Link>
