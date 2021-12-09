@@ -48,9 +48,37 @@ const Posts = ({ posts }: any) => {
     created_at={post.created_at}
     />  
     ));
+
+    const addPost  = async (e) => { 
+      e.preventDefault();
+    }
   
   return <>
-    {postsMap}
+    <a href="#my-modal" class="btn btn-primary">Add New Post</a> 
+    <div id="my-modal" class="modal">
+      <div class="modal-box">
+      <p>Add new post</p> 
+      <form method="POST" onSubmit={addPost}>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Title</span>
+        </label> 
+        <input type="text" placeholder="The Galaxy" class="input input-primary input-bordered" />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Description</span>
+        </label> 
+        <input type="text" placeholder="Description" class="input input-primary input-bordered" />
+      </div>
+      <button class="btn btn-primary mt-5" type="submit">Add</button>
+      </form>
+      <div class="modal-action">
+        <a href="/posts#" class="btn">Close</a>
+    </div>
+  </div>
+</div>
+  {postsMap.length > 0 ? postsMap : <p>No available post</p>}
   </>
 }
 

@@ -1,6 +1,6 @@
 .nav_container {
   /* Container display type */
-  @apply navbar max-w-screen-lg flex flex-row bg-blue-700 items-center justify-between;
+  @apply navbar md:container mx-auto flex flex-row bg-blue-700 items-center justify-between;
   /* Height, padding and margins */
   @apply h-16 px-2;
   /* Color */

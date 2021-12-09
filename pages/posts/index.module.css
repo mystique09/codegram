@@ -22,3 +22,7 @@
 .follow {
   @apply btn btn-ghost;
 }
+
+.wrapper {
+  @apply modal absolute top-0 z-10;
+}
