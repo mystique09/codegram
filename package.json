@@ -13,7 +13,6 @@
     "@reduxjs/toolkit": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "cookie": "^0.4.1",
-    "daisyui": "^1.16.2",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
